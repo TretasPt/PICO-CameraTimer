@@ -1,0 +1,12 @@
+wait(5s)
+
+// comment
+
+photo(10s)
+
+
+
+sequence(10){
+	photo(1s)
+	wait(5s)
+}
