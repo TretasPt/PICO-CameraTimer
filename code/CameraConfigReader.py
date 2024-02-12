@@ -7,17 +7,19 @@ def minToSec(min):
 def hourToSec(hour):
     return 3600*hour
 
+def isFloat(string):
+    try:
+        float(string)
+        return True
+    except ValueError:
+        return False
+
 def toSec(time):
 
     number = time[0:-1]
-    #if not number.isdigit():
-    #    raise Exception("Badly formated time. The time should be a number followed by a unit. Units are s(econd), m(inute) and h(hour). Exaple: \"30s\". Argument that generated the error: " + time)
-    #number= float(number)
-    try:
-        print(number + " is the number")
-        number = float(number)
-    except:
+    if not isFloat(number):
         raise Exception("Badly formated time. The time should be a number followed by a unit. Units are s(econd), m(inute) and h(hour). Exaple: \"30s\". Argument that generated the error: " + time)
+    number= float(number)
     unit = time[-1]
 
     if unit == "s":
@@ -33,7 +35,6 @@ def toSec(time):
 def read(lines):
 
     for line in lines:
-        # print(line)
         readLine(line)
 
 
@@ -41,15 +42,15 @@ def readLine(line):
     line = line.strip()
 
     if line=="" or line.startswith("//"):
-        print("Skip")
+        #print("Skip")
         return
     elif line.startswith("photo"):
         duration = toSec(removeParenteses(line[5:]))
-        print("pic")
+        print("picture(%s)" % duration)
         picture(duration)
     elif line.startswith("wait"):
         duration = toSec(removeParenteses(line[4:]))
-        print("wait")
+        print("wait(%s)" % duration)
         wait(duration)
     else:
         print("unrecognized.")
