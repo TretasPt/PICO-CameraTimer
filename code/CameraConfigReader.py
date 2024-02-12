@@ -1,4 +1,4 @@
-import CameraTimerV3 as CT
+import CameraTimerV5 as CT
 import time
 
 def minToSec(min):
@@ -10,9 +10,14 @@ def hourToSec(hour):
 def toSec(time):
 
     number = time[0:-1]
-    if not number.isdigit():
+    #if not number.isdigit():
+    #    raise Exception("Badly formated time. The time should be a number followed by a unit. Units are s(econd), m(inute) and h(hour). Exaple: \"30s\". Argument that generated the error: " + time)
+    #number= float(number)
+    try:
+        print(number + " is the number")
+        number = float(number)
+    except:
         raise Exception("Badly formated time. The time should be a number followed by a unit. Units are s(econd), m(inute) and h(hour). Exaple: \"30s\". Argument that generated the error: " + time)
-    number= float(number)
     unit = time[-1]
 
     if unit == "s":
