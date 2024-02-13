@@ -1,4 +1,4 @@
-import CameraTimerV5 as CT
+import CameraTimerV4 as CT
 import _thread
 import machine
 
